@@ -4,11 +4,11 @@ from colorama import Fore, Style
 
 # Function usage (help)
 def usage():
-    print(f"Usage: pingelnica [OPTION] IP or file")
+    print(f"Usage: pingelnica [OPTION] IP or file\n")
     print(f"[OPTION]:")
     print(f"-i: IP address".format("-i", "IP address"))
     print(f"-f: file".format("-f", "file name"))
-    print(f"-h: This help".format("-h", "This help"), end='\n\n')
+    print(f"-h: This help\n".format("-h", "This help"))
     print(f"App home page: https://github.com/zmijka/pingelnica")
     
    
@@ -21,8 +21,8 @@ def from_file(filename):
                 ping(row.rstrip())
         f.close()
     # File not found 
-    except FileNotFoundError as Error:
-        print(f"Sorry, file not found!!!", end='\n\n')
+    except FileNotFoundError:
+        print(f"Sorry, file not found!!!\n")
         usage()
 
 
@@ -56,9 +56,9 @@ def main():
         opts, args = getopt.getopt(argv, "h:i:f:")
     
     # Arguments not correct
-    except getopt.error as Error:
-      usage()
-      sys.exit(2)
+    except getopt.error:
+        usage()
+        sys.exit(2)
     
     for opt, arg in opts:
         # Help option
